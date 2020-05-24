@@ -40,7 +40,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>src/test/resources/webTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -76,7 +76,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <xmlFile>${suite.xml}</xmlFile>
+                        <xmlFile>${suite.file}</xmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <ts.appium>${appium-server.address}</ts.appium>

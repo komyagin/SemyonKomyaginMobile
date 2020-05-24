@@ -27,9 +27,9 @@ public class PageObject implements IPageObject {
 
 
     @Override
-    public WebElement getWebElement(String weName) throws NoSuchFieldException, IllegalAccessException {
+    public WebElement getWebElement(String webElementName) throws NoSuchFieldException, IllegalAccessException {
         // use reflection technique
-        Field field = somePageObject.getClass().getDeclaredField(weName);
+        Field field = somePageObject.getClass().getDeclaredField(webElementName);
         field.setAccessible(true);
         return (WebElement) field.get(somePageObject);
 

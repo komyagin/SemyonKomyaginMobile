@@ -4,6 +4,6 @@ import org.openqa.selenium.WebElement;
 
 public interface IPageObject {
 
-    WebElement getWebElement(String weName) throws NoSuchFieldException, IllegalAccessException, InstantiationException;
+    WebElement getWebElement(String webElementName) throws NoSuchFieldException, IllegalAccessException, InstantiationException;
 
 }

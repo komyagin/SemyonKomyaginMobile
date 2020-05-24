@@ -1,27 +1,27 @@
 package scenarios;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.BaseTest;
+import utils.Properties;
 
 public class nativeMobileTests extends BaseTest {
 
-    @Test(groups = {"native"}, description = "This simple test just click on the Sign In button")
-    public void simpleNativeTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException, InterruptedException {
+
+    @Test(groups = {"native"}, description = "Register new account, log in and check you are logged in")
+    public void registerLogInTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException {
         getPageObject().getWebElement("registerButton").click();
-        getPageObject().getWebElement("registrationEmail").sendKeys("poop@at.com");
-        getPageObject().getWebElement("registrationUserName").sendKeys("trwne");
-        getPageObject().getWebElement("registrationPassword").sendKeys("MyPassword");
-        getPageObject().getWebElement("registrationConfirmPassword").sendKeys("MyPassword");
+        getPageObject().getWebElement("registrationEmail").sendKeys(Properties.getProperty("email"));
+        getPageObject().getWebElement("registrationUserName").sendKeys(Properties.getProperty("user"));
+        getPageObject().getWebElement("registrationPassword").sendKeys(Properties.getProperty("password"));
+        getPageObject().getWebElement("registrationConfirmPassword").sendKeys(Properties.getProperty("password"));
         getPageObject().getWebElement("registerNewAccountButton").click();
-        getPageObject().getWebElement("loginEmail").sendKeys("poop@at.com");
-        getPageObject().getWebElement("loginPassword").sendKeys("MyPassword");
+        getPageObject().getWebElement("loginEmail").sendKeys(Properties.getProperty("email"));
+        getPageObject().getWebElement("loginPassword").sendKeys(Properties.getProperty("password"));
         getPageObject().getWebElement("signInBtn").click();
         String pageText = getPageObject().getWebElement("pageText").getText();
-        System.out.println(pageText);
-        assert (pageText.equals("BudgetActivity"));
-        Thread.sleep(10000);
-        System.out.println("Simplest Android native test done");
 
+        Assert.assertEquals(pageText, "BudgetActivity", "Registered, Logged In, and on expected Page");
     }
 
 }

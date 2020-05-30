@@ -21,10 +21,51 @@
         <appium.version>7.3.0</appium.version>
         <testng.vesrion>7.1.0</testng.vesrion>
 
+        <!-- For local testing
         <appium-server.address>http://localhost:4723/wd/hub</appium-server.address>
+        -->
+        <!-- For cloud testing TOKEN set in system environment variable -->
+        <appium-server.address>https://EPM-TSTF:${env.TOKEN}@mobilecloud.epam.com/wd/hub</appium-server.address>
+
     </properties>
 
     <profiles>
+        <profile>
+            <id>cloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>cloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>iosCloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/iosCloudNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>iosCloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/iosCloudWebTNG.xml</suite.file>
+            </properties>
+        </profile>
         <profile>
             <id>native</id>
             <activation>
@@ -37,7 +78,7 @@
         <profile>
             <id>web</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>src/test/resources/webTNG.xml</suite.file>
